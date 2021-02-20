@@ -1,9 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import { count, length } from './numbers/.js';
 
 const hi = 'Hello, friend!';
-const value = true;
-const value2 = false;
 
 function App() {
   return (
@@ -12,12 +11,9 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <h1 style={{
           color: 'blue'
-        }}>{hi}(значeние переменной)</h1>
+        }}>{hi}</h1>
         <p>
-        {888}(Число) {888*100}(результат арифметической операции)
-        {value && 'value is true'}(результат логической операции)
-        {value2 ? 'value2 is true' : 'value2 is false'}(использования тернарного условия)
-        {undefined}{null}{false}{true}(undefined, null, false и true не выводятся)
+        count * length = {count*length}
         </p>
         <p>
           Edit <code>src/App.js</code> and save to reload.
