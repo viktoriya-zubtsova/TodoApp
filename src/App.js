@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { count, length } from './numbers/.js';
+import { count, length } from './number.js';
 
 const hi = 'Hello, friend!';
 
