@@ -1,7 +1,7 @@
-.delete {
-  display: none;
+.item{
+  margin: 0;
 }
-
-.item:hover ~ .delete {
-  display: block;
-} 
+.item:hover {
+  background-color: #e8e8e8;
+  transition: 1s;
+}
