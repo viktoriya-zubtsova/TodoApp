@@ -3,10 +3,13 @@ import TextField from '@material-ui/core/TextField';
 
 const InputItem = () =>(<div>
   <TextField
-    id="outlined-basic"
-    label="Добавить задание" 
-    variant="outlined"
-    />
+    id="filled-secondary"
+    label="Добавить новое дело"
+    variant="filled"
+    fullWidth
+    color="secondary"
+    margin="dense"
+  />
 </div>);
 
 export default InputItem;

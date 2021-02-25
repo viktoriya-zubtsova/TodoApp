@@ -1,0 +1,7 @@
+.delete {
+  display: none;
+}
+
+.item:hover ~ .delete {
+  display: block;
+} 

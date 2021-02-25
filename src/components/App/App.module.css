@@ -1,7 +1,11 @@
 .wrap {
   margin: auto;
-  width: 300px;
+  width: 445px;
+  font-family: Helvetica;
+  border-radius: 5px;
+  border: 2px solid #f50057;
+  padding: 25px 30px 35px 30px;
 }
 .title{
-  font-family: Arial;
+  text-align: center;
 }
