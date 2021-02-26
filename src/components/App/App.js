@@ -4,8 +4,6 @@ import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
 
-const todoItem = 'написать новое приложение';
-
 class App extends React.Component {
   state = {
     items: [
@@ -25,7 +23,7 @@ class App extends React.Component {
         id: 3
       }
     ],
-    count: 6
+      count: 3
   };
 
   onClickDone = id => {
@@ -36,14 +34,28 @@ class App extends React.Component {
       }
       return newItem;
     });
-    this.setState({ items: newItemList });    
+    this.setState({ items: newItemList });
+  };
+
+  onClickDelete = id => {
+    const newItemList = this.state.items.filter(item => {
+      const newItem = { ...item };
+      if (item.id !== id) {
+        return newItem;
+      }
+    });
+    this.setState({ items: newItemList });
   };
 
   render() {
     return (<div className={styles.wrap}>
       <h1 className={styles.title}>Важные дела:</h1>
       <InputItem />
-      <ItemList items={this.state.items} onClickDone={this.onClickDone} />
+      <ItemList
+        items={this.state.items}
+        onClickDone={this.onClickDone}
+        onClickDelete={this.onClickDelete}
+       />
       <Footer count={this.state.count} />
     </div>);
   }
