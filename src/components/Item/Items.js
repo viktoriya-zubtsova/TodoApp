@@ -8,13 +8,13 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import classnames from 'classnames';
 import styles from './Items.module.css';
 
-const Item = ({ value, isDone, onClickDone }) =>(
+const Item = ({ value, isDone, onClickDone, id }) =>(
   <ListItem>
     <Checkbox
       disableRipple
       checked={isDone}
       tabIndex={-1}
-      onClick={() => onClickDone(isDone)}
+      onClick={() => onClickDone(id)}
     />
     <ListItemText primary={value} className={
       classnames({
