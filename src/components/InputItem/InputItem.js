@@ -33,7 +33,7 @@ class InputItem extends React.Component {
         onClick={() => {
           if (this.state.inputValue !== '') { this.onButtonClick();
           } else { alert('Сначала введи задание в поле'); }
-        }}>>
+        }}>
         добавить
       </Button>
     </div>);
