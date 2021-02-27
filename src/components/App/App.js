@@ -3,8 +3,7 @@ import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
-
-const todoItem = 'написать новое приложение';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
   state = {
@@ -25,7 +24,7 @@ class App extends React.Component {
         id: 3
       }
     ],
-    count: 6
+    idCount: 3
   };
 
   onClickDone = id => {
@@ -36,17 +35,48 @@ class App extends React.Component {
       }
       return newItem;
     });
-    this.setState({ items: newItemList });    
+    this.setState({ items: newItemList });
   };
+
+  onClickDelete = id => {
+    const newItemList = this.state.items.filter(item => {
+      const newItem = { ...item };
+      if (item.id !== id) {
+        return newItem;
+      }
+    });
+    this.setState({ items: newItemList });
+  };
+
+  onClickAdd = value => this.setState(state => ({
+    items: [
+      ...state.items,
+      {
+        value,
+        isDone: false,
+        id: state.idCount + 1
+      }
+    ],
+    idCount: state.idCount + 1
+  }));
 
   render() {
     return (<div className={styles.wrap}>
       <h1 className={styles.title}>Важные дела:</h1>
-      <InputItem />
-      <ItemList items={this.state.items} onClickDone={this.onClickDone} />
-      <Footer count={this.state.count} />
+      <InputItem onClickAdd={this.onClickAdd} />
+      <ItemList
+        items={this.state.items}
+        onClickDone={this.onClickDone}
+        onClickDelete={this.onClickDelete}
+       />
+      <Footer count={this.state.items.length} />
     </div>);
   }
+};
+
+App.propTypes = {
+  items: PropTypes.array,
+  idCount: PropTypes.number
 };
 
 export default App;
