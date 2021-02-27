@@ -3,6 +3,7 @@ import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
   state = {
@@ -71,6 +72,11 @@ class App extends React.Component {
       <Footer count={this.state.items.length} />
     </div>);
   }
+};
+
+App.propTypes = {
+  items: PropTypes.array,
+  idCount: PropTypes.number
 };
 
 export default App;

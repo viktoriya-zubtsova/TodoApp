@@ -1,6 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
 
 class InputItem extends React.Component {
   state ={
@@ -39,5 +40,9 @@ class InputItem extends React.Component {
     </div>);
   }
 }
+
+InputItem.propTypes = {
+  inputValue: PropTypes.string
+};
 
 export default InputItem;
