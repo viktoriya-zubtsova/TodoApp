@@ -23,7 +23,7 @@ class App extends React.Component {
         id: 3
       }
     ],
-    count: 3
+    idCount: 3
   };
 
   onClickDone = id => {
@@ -53,10 +53,10 @@ class App extends React.Component {
       {
         value,
         isDone: false,
-        id: state.count + 1
+        id: state.idCount + 1
       }
     ],
-    count: state.count + 1
+    idCount: state.idCount + 1
   }));
 
   render() {
@@ -68,7 +68,7 @@ class App extends React.Component {
         onClickDone={this.onClickDone}
         onClickDelete={this.onClickDelete}
        />
-      <Footer count={this.state.items.length }/>
+      <Footer count={this.state.items.length} />
     </div>);
   }
 };
