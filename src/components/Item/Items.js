@@ -11,13 +11,11 @@ import PropTypes from 'prop-types';
 
 class Item extends React.Component {
   componentDidMount() {
-    console.log('componentDidMount');
+    this.timer = setInterval(() => console.log('interval'), 1000);
   };
-  compomentDidUpdate() {
-    console.log('compomentDidUpdate');
-  };
+
   componentWillUnmount() {
-    console.log('componentWillUnmount');
+    clearInterval(this.timer);
   };
 
   render() {
@@ -52,7 +50,9 @@ Item.defaultProps = {
 Item.propTypes = {
   value: PropTypes.string.isRequired,
   isDone: PropTypes.bool.isRequired,
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
+  onClickDone: PropTypes.func,
+  onClickDelete: PropTypes.func
 };
 
 export default Item;

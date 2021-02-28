@@ -1,7 +1,8 @@
 import React from 'react';
 import Item from '../Item/Items';
 import List from '@material-ui/core/List';
-import styles from './ItemList.module.css'
+import styles from './ItemList.module.css';
+import PropTypes from 'prop-types';
 
 const ItemList = ({ items, onClickDone, onClickDelete }) =>(<List>
     {items.map(item => (
@@ -15,5 +16,10 @@ const ItemList = ({ items, onClickDone, onClickDelete }) =>(<List>
       </div>))}
   </List>);
 
+ItemList.propTypes = {
+  items: PropTypes.array,
+  onClickDone: PropTypes.func,
+  onClickDelete: PropTypes.func
+};
 
 export default ItemList;
