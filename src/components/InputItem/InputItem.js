@@ -42,7 +42,9 @@ class InputItem extends React.Component {
 }
 
 InputItem.propTypes = {
-  inputValue: PropTypes.string
+  inputValue: PropTypes.string,
+  onClickAdd: PropTypes.func,
+  onButtonClick: PropTypes.func
 };
 
 export default InputItem;
