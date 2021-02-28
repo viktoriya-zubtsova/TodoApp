@@ -9,26 +9,39 @@ import classnames from 'classnames';
 import styles from './Items.module.css';
 import PropTypes from 'prop-types';
 
-const Item = ({ value, isDone, onClickDone, id, onClickDelete }) =>(
-  <ListItem>
-    <Checkbox
-      disableRipple
-      checked={isDone}
-      tabIndex={-1}
-      onClick={() => onClickDone(id)}
-    />
-    <ListItemText primary={value} className={
-      classnames({
-        [styles.item]: true,
-        [styles.done]: isDone
-      })}
-       />
-    <ListItemSecondaryAction>
-      <IconButton onClick={() => onClickDelete(id)}>
-        <DeleteIcon />
-      </IconButton>
-    </ListItemSecondaryAction>
-</ListItem>);
+class Item extends React.Component {
+  componentDidMount() {
+    console.log('componentDidMount');
+  };
+  compomentDidUpdate() {
+    console.log('compomentDidUpdate');
+  };
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+  };
+
+  render() {
+    const { value, isDone, onClickDone, id, onClickDelete } = this.props;
+    return (<ListItem>
+      <Checkbox
+        checked={isDone}
+        tabIndex={-1}
+        onClick={() => onClickDone(id)}
+      />
+      <ListItemText primary={value} className={
+        classnames({
+          [styles.item]: true,
+          [styles.done]: isDone
+        })}
+         />
+      <ListItemSecondaryAction>
+        <IconButton onClick={() => onClickDelete(id)}>
+          <DeleteIcon />
+        </IconButton>
+      </ListItemSecondaryAction>
+  </ListItem>);
+  }
+};
 
 Item.defaultProps = {
   value: 'здесь должен быть текст задания',
