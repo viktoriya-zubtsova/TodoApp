@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import classnames from 'classnames';
 import styles from './Items.module.css';
+import PropTypes from 'prop-types';
 
 const Item = ({ value, isDone, onClickDone, id, onClickDelete }) =>(
   <ListItem>
@@ -27,6 +28,18 @@ const Item = ({ value, isDone, onClickDone, id, onClickDelete }) =>(
         <DeleteIcon />
       </IconButton>
     </ListItemSecondaryAction>
-  </ListItem>);
+</ListItem>);
+
+Item.defaultProps = {
+  value: 'здесь должен быть текст задания',
+  isDone: false,
+  id: Math.floor(Math.random() * Math.floor(100))
+};
+
+Item.propTypes = {
+  value: PropTypes.string.isRequired,
+  isDone: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired
+};
 
 export default Item;
