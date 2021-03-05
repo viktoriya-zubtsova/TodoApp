@@ -28,7 +28,7 @@ const App = () => {
   };
 
   const [items, setItems] = useState(initialState.items);
-  const [count, setIdCount] = useState(initialState.idCount);
+  const [idCount, setIdCount] = useState(initialState.idCount);
 
   useEffect (() =>  {
      console.log('mount')
@@ -64,11 +64,12 @@ const App = () => {
       {
         value,
         isDone: false,
-        id: initialState.idCount + 1
+        id: idCount + 1
       }
     ];
+
     setItems(newItems);
-    setIdCount((count) => count + 1);
+    setIdCount(idCount => idCount + 1);
   };
 
     return (<div className={styles.wrap}>
