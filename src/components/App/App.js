@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
 import PropTypes from 'prop-types';
 
-class App extends React.Component {
-  state = {
+const App = () => {
+  const initialState = {
     items: [
       {
         value: 'написать новое приложение',
@@ -27,51 +27,60 @@ class App extends React.Component {
     idCount: 3
   };
 
-  onClickDone = id => {
-    const newItemList = this.state.items.map(item => {
+  const [items, setItems] = useState(initialState.items);
+  const [count, setIdCount] = useState(initialState.idCount);
+
+  useEffect (() =>  {
+     console.log('mount')
+   }, []);
+  useEffect (() =>  {
+     console.log('update');
+   });
+
+  const onClickDone = id => {
+    const newItemList = items.map(item => {
       const newItem = { ...item };
       if (item.id === id) {
         newItem.isDone = !item.isDone;
       }
       return newItem;
     });
-    this.setState({ items: newItemList });
+    setItems(newItemList);
   };
 
-  onClickDelete = id => {
-    const newItemList = this.state.items.filter(item => {
+  const onClickDelete = id => {
+    const newItemList = items.filter(item => {
       const newItem = { ...item };
       if (item.id !== id) {
         return newItem;
       }
     });
-    this.setState({ items: newItemList });
+    setItems(newItemList);
   };
 
-  onClickAdd = value => this.setState(state => ({
-    items: [
-      ...state.items,
+  const onClickAdd = value => {
+    const newItems = [
+      ...items,
       {
         value,
         isDone: false,
-        id: state.idCount + 1
+        id: initialState.idCount + 1
       }
-    ],
-    idCount: state.idCount + 1
-  }));
+    ];
+    setItems(newItems);
+    setIdCount((count) => count + 1);
+  };
 
-  render() {
     return (<div className={styles.wrap}>
       <h1 className={styles.title}>Важные дела:</h1>
-      <InputItem onClickAdd={this.onClickAdd} />
+      <InputItem onClickAdd={onClickAdd} />
       <ItemList
-        items={this.state.items}
-        onClickDone={this.onClickDone}
-        onClickDelete={this.onClickDelete}
+        items={items}
+        onClickDone={onClickDone}
+        onClickDelete={onClickDelete}
        />
-      <Footer count={this.state.items.length} />
+      <Footer count={items.length} />
     </div>);
-  }
 };
 
 App.propTypes = {
