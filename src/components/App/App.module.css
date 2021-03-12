@@ -1,12 +1,22 @@
+body{
+  background: #eee;
+}
 .wrap {
   margin: auto;
-  width: 445px;
+  width: 600px;
   font-family: Helvetica;
-  border-radius: 5px;
-  border: 2px solid #f50057;
-  padding: 25px 30px 35px 30px;
+  padding-top: 20px;
+  display: grid;
+  grid-template-areas: 'sidebar ... content content';
 }
-.title{
-  text-align: center;
+.content{
+  grid-area: content;
+}
+.sidebar{
+  width: 155px;
+  grid-area: sidebar;
+}
+.link{
   color: #333;
+  text-decoration: none;
 }
