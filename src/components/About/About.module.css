@@ -1,0 +1,10 @@
+.userAvatar{
+  width: 443px;
+  border-radius: 50%;
+}
+.title{
+  text-align: center;
+}
+.link{
+  color: #333;
+}

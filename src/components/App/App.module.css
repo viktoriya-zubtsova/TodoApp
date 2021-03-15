@@ -11,6 +11,7 @@ body{
 }
 .content{
   grid-area: content;
+  width: 445px;
 }
 .sidebar{
   width: 155px;
