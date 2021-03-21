@@ -15,6 +15,7 @@ class Item extends React.Component {
     const { value, isDone, onClickDone, id, onClickDelete } = this.props;
     return (<ListItem>
       <Checkbox
+        color="primary"
         checked={isDone}
         tabIndex={-1}
         onClick={() => onClickDone(id)}

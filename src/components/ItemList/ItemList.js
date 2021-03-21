@@ -4,8 +4,8 @@ import List from '@material-ui/core/List';
 import styles from './ItemList.module.css';
 import PropTypes from 'prop-types';
 
-const ItemList = ({ items, onClickDone, onClickDelete }) =>(<List>
-    {items.map(item => (
+const ItemList = ({ filterItems, onClickDone, onClickDelete }) =>(<List>
+    {filterItems.map(item => (
       <div key={item.id} className={styles.item}>
         <Item value={item.value}
         isDone={item.isDone}

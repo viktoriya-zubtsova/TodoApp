@@ -5,36 +5,41 @@ import PropTypes from 'prop-types';
 
 class InputItem extends React.Component {
   state ={
-    inputValue: ''
+    inputValue: '',
+    helperText: '',
+    error: false
   };
   onButtonClick = () => {
-    this.setState({
-      inputValue: ''
-    });
-    this.props.onClickAdd(this.state.inputValue)
+    if (this.state.inputValue === '') {
+      this.setState({helperText: 'Сначала введи задание', error: true});
+    } else if (this.props.items.every(item => item.value != this.state.inputValue)) {
+      this.setState({inputValue: '', helperText: '', error: false});
+      this.props.onClickAdd(this.state.inputValue);
+    } else {
+      this.setState({ helperText: 'Такое задание уже есть, введи другое', error: true});
+    }
   }
   render() {
-    const { onClickAdd } = this.props;
+    const { onClickAdd, items } = this.props;
     return (<div>
       <TextField
         id="filled-secondary"
         label="Новое задание"
         variant="filled"
+        error={this.state.error}
         fullWidth
-        color="secondary"
+        color="primary"
         margin="dense"
+        helperText={this.state.helperText}
         value={this.state.inputValue}
         onChange={event => this.setState({ inputValue: event.target.value })}
       />
       <Button
         variant="outlined"
-        color="secondary"
+        color="primary"
         fullWidth
         size="small"
-        onClick={() => {
-          if (this.state.inputValue !== '') { this.onButtonClick();
-          } else { alert('Сначала введи задание в поле'); }
-        }}>
+        onClick={this.onButtonClick}>
         добавить
       </Button>
     </div>);
