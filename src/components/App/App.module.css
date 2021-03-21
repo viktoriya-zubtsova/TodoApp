@@ -3,21 +3,21 @@ body{
 }
 .wrap {
   margin: auto;
-  width: 600px;
+  width: 450px;
   font-family: Helvetica;
   padding-top: 20px;
-  display: grid;
-  grid-template-areas: 'sidebar ... content content';
 }
 .content{
-  grid-area: content;
-  width: 445px;
+  width: 450px;
 }
 .sidebar{
-  width: 155px;
-  grid-area: sidebar;
+  box-sizing: border-box;
+  padding: 10px 10px;
+  width: 450px;
+  background: bottom right no-repeat url(logo.png);
+  background-size: contain;
 }
 .link{
-  color: #333;
+  padding-right: 10px;
   text-decoration: none;
 }

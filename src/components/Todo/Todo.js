@@ -7,35 +7,30 @@ import PropTypes from 'prop-types';
 
 const Todo = () => {
   const initialState = {
-    items: [
-      {
-        value: 'написать новое приложение',
-        isDone: true,
-        id: 1
-      },
-      {
-        value: 'прописать props-ы',
-        isDone: false,
-        id: 2
-      },
-      {
-        value: 'сделать все дела',
-        isDone: true,
-        id: 3
-      }
-    ],
-    idCount: 3
+    items: JSON.parse(localStorage.getItem('items')) || [],
+    idCount: 0,
+    filterItems: []
   };
 
   const [items, setItems] = useState(initialState.items);
   const [idCount, setIdCount] = useState(initialState.idCount);
+  const [filter, setFilter] = useState(initialState.filter);
+  const [filterItems, setFilterItems] = useState(initialState.filterItems);
 
-  useEffect (() =>  {
-     console.log('mount')
-   }, []);
-  useEffect (() =>  {
-     console.log('update');
-   });
+  useEffect(() => {
+	    localStorage.setItem('items', JSON.stringify(items));
+	  });
+
+  useEffect(() => {
+    setFilterItems(items);
+  }, []);
+
+  useEffect(() => {
+    onClickFilter(filter);
+  }, [items]);
+
+  const countActive = items.filter((item) => item.isDone === false);
+  const countDone = items.filter((item) => item.isDone === true);
 
   const onClickDone = id => {
     const newItemList = items.map(item => {
@@ -72,16 +67,58 @@ const Todo = () => {
     setIdCount(idCount => idCount + 1);
   };
 
+  const onClickFilter = filter => {
+    let newItemList = [];
+      switch (filter) {
+      case 'all':
+  				newItemList = items;
+  				break;
+			case 'done':
+					newItemList = items.filter(item => item.isDone);
+					break;
+			case 'active':
+					newItemList = items.filter(item => !item.isDone);
+					break;
+			default:
+					newItemList = items;
+	       }
+    setFilterItems(newItemList);
+    setFilter(filter);
+    };
+
+  const onClickDeleteDone = isDone => {
+    const newItemList = items.filter(item => {
+      const newItem = { ...item };
+      if (item.isDone !== true) {
+        return newItem;
+      }
+    });
+    setItems(newItemList);
+  }
+
+  const onClickDeleteAll = () => {
+    const newItemList = [];
+    setItems(newItemList);
+    setIdCount(count => 0);
+  };
+
     return (
       <div className={styles.wrap}>
         <h1 className={styles.title}>Важные дела:</h1>
-        <InputItem onClickAdd={onClickAdd} />
+        <InputItem onClickAdd={onClickAdd} items={initialState.items}/>
         <ItemList
-          items={items}
+          filterItems={filterItems}
           onClickDone={onClickDone}
           onClickDelete={onClickDelete}
         />
-        <Footer count={items.length} />
+        <Footer
+          countAll={items.length}
+          countActive={countActive.length}
+          countDone={countDone.length}
+          onClickDeleteAll={onClickDeleteAll}
+          onClickDeleteDone={onClickDeleteDone}
+          onClickFilter={onClickFilter}
+        />
       </div>);
 };
 
