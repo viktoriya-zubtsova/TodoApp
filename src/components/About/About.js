@@ -91,9 +91,9 @@ class About extends React.Component {
           </div>
           <h2 className={styles.title}>Мои проекты:</h2>
           <ul>
-            <li><a className={styles.projectLink} href='https://webheroschool.github.io/zubtsova-final-HTML-CSS/'>Axion</a></li>
+            <li><a className={styles.projectLink} href='https://viktoriya-zubtsova.github.io/Axion/'>Axion</a></li>
             <li><a className={styles.projectLink} href='https://viktoriya-zubtsova.github.io/Bali/'>Bali</a></li>
-            <li><a className={styles.projectLink} href='https://webheroschool.github.io/zubtsova-JS/'>Карты с багами оО</a></li>
+            <li><a className={styles.projectLink} href='https://viktoriya-zubtsova.github.io/Bug-Game/'>Карты с багами оО</a></li>
           </ul>
         </div>}
         <h2 className={styles.title}>{ isLoading ? <LinearProgress color="primary" /> : 'Мои репозитории:'}</h2>
