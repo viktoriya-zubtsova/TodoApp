@@ -10,13 +10,6 @@ body{
 .content{
   width: 450px;
 }
-.sidebar{
-  box-sizing: border-box;
-  padding: 10px 10px;
-  width: 450px;
-  background: bottom right no-repeat url(logo.png);
-  background-size: contain;
-}
 .link{
   padding-right: 10px;
   text-decoration: none;
