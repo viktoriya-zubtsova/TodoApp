@@ -104,7 +104,7 @@ const Todo = () => {
 
     return (
       <div className={styles.wrap}>
-        <h1 className={styles.title}>Важные дела:</h1>
+        <h1 className={styles.title}>Список дел:</h1>
         <InputItem onClickAdd={onClickAdd} items={initialState.items}/>
         <ItemList
           filterItems={filterItems}
