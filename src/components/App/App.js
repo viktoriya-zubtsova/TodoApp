@@ -16,7 +16,7 @@ const App = () =>
           <meta property="og:image:width" content="450"/>
           <meta property="og:image:height" content="323"/>
       </MetaTags>
-      <Card className={styles.content}>
+      <Card>
         <Todo />
       </Card>
     </div>);

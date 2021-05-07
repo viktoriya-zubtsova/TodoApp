@@ -1,16 +1,11 @@
 body{
   background: #eee;
+  margin: 0;
 }
 .wrap {
   margin: auto;
-  width: 450px;
+  width: 650px;
+  max-width: 90vw;
   font-family: Helvetica;
-  padding-top: 20px;
-}
-.content{
-  width: 450px;
-}
-.link{
-  padding-right: 10px;
-  text-decoration: none;
+  padding-top: 5vw;
 }

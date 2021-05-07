@@ -1,7 +1,7 @@
 .wrap {
   margin: auto;
-  width: 445px;
   font-family: Helvetica;
+  max-width: 600px; 
 }
 .title{
   text-align: center;
